@@ -1,0 +1,7 @@
+adresses:
+    path:     /profile/adresses
+    defaults: { _controller: UsersBundle:User:adresses }
+
+factures:
+    path:     /profile/factures
+    defaults: { _controller: UsersBundle:User:facture }

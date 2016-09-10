@@ -1,0 +1,35 @@
+The form :
+{{ form_widget(form) }}
+
+
+
+
+
+
+{#<h3>Produits</h3>#}
+{#<table>#}
+    {#<thead>#}
+    {#<tr>#}
+        {#<th>#}
+            {#Nom Produit#}
+        {#</th>#}
+        {#<th>#}
+            {#Prix#}
+        {#</th>#}
+        {#<th>#}
+            {#Catégorie#}
+        {#</th>#}
+    {#</tr>#}
+    {#</thead>#}
+    {#<tbody>#}
+
+{#{% for produit in produits %}#}
+    {#<tr>#}
+        {#<td>{{ produit.nom }}</td>#}
+        {#<td>{{ produit.prixHT }}</td>#}
+        {#<td>{{ produit.categorie }}</td>#}
+    {#</tr>#}
+{#{% endfor %}#}
+
+    {#</tbody>#}
+{#</table>#}

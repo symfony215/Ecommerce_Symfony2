@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+
+    <div class="span3">
+        {% include 'UsersBundle:Default:modulesUsed/userPanel.html.twig' %}
+        {% include '::modulesUsed/panier.html.twig' %}
+    </div>
+
+    <div class="span9">
+        <h2>Modifier mes informations</h2>
+        <div id="collapseOne" class="accordion-body collapse in">
+            <div class="accordion-inner">
+
+                <div class="span4">
+                    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                        {{ form_widget(form) }}
+                        <br />
+                        <input type="submit"  class="btn btn-primary" value="{{ 'profile.edit.submit'|trans }}" />
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
