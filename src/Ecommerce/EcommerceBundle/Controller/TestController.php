@@ -2,19 +2,33 @@
 
 namespace Ecommerce\EcommerceBundle\Controller;
 
-use Ecommerce\EcommerceBundle\EcommerceBundle;
-use Ecommerce\EcommerceBundle\Entity\Produits;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Config\Tests\Resource\ResourceStub;
 use Ecommerce\EcommerceBundle\Forms\TestType;
+use Symfony\Component\HttpFoundation\Request;
 
 class TestController extends Controller
 {
 
-    public function testFormAction()
+    public function testFormAction(Request $request)
     {
 
         $form = $this->createForm(new TestType());
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $tab = $form->getData();
+            $email = $form['email']->getData();
+            echo $tab['email']."<br>";
+            echo $email."<br>";
+
+            $user = $form['Users']->getData();
+            echo $user->getId();
+
+            $form = $this->createForm(new TestType(),array('email'=>$email));
+        }
+
         return $this->render('EcommerceBundle:Default:test.html.twig',array('form'=>$form->createView()));
     }
 

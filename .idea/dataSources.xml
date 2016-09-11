@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3686594923">
-    <data-source source="LOCAL" name="MySQL - symfony@localhost" uuid="4657fdd2-c4f4-4423-ba48-271bf3b04935">
+  <component name="DataSourceManagerImpl" format="xml" hash="2225911400">
+    <data-source source="LOCAL" name="MySQL - Ecommerce_symfony@localhost" uuid="4657fdd2-c4f4-4423-ba48-271bf3b04935">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/symfony</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/Ecommerce_symfony</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

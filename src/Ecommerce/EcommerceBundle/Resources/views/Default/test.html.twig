@@ -1,5 +1,14 @@
-The form :
-{{ form_widget(form) }}
+<html>
+<body>
+    {{ form_errors(form) }}
+    <form action="{{ path('test') }}" method="post">
+        {{ form_widget(form) }}
+    </form>
+
+</body>
+</html>
+
+
 
 
 
