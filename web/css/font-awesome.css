@@ -161,9 +161,7 @@ ul.icons-ul > li .icon-li {
   height: auto;
   line-height: normal;
   vertical-align: baseline;
-  background-image: none;
-  background-position: 0% 0%;
-  background-repeat: repeat;
+  background: none repeat 0 0;
   margin-top: 0;
 }
 /* more sprites.less reset */

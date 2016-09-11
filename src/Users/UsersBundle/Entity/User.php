@@ -61,7 +61,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function addCommande(\Users\UsersBundle\Entity\Commandes $commande)
+    public function addCommande(Commandes $commande)
     {
         $this->commandes[] = $commande;
 
@@ -73,7 +73,7 @@ class User extends BaseUser
      *
      * @param \Users\UsersBundle\Entity\Commandes $commande
      */
-    public function removeCommande(\Users\UsersBundle\Entity\Commandes $commande)
+    public function removeCommande(Commandes $commande)
     {
         $this->commandes->removeElement($commande);
     }
@@ -95,7 +95,7 @@ class User extends BaseUser
      *
      * @return User
      */
-    public function addAdress(\Users\UsersBundle\Entity\UsersAdresses $adress)
+    public function addAdress(UsersAdresses $adress)
     {
         $this->adresses[] = $adress;
 
@@ -107,7 +107,7 @@ class User extends BaseUser
      *
      * @param \Users\UsersBundle\Entity\UsersAdresses $adress
      */
-    public function removeAdress(\Users\UsersBundle\Entity\UsersAdresses $adress)
+    public function removeAdress(UsersAdresses $adress)
     {
         $this->adresses->removeElement($adress);
     }

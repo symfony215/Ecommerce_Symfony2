@@ -1,3 +1,11 @@
 page:
     path:     /page/{id}
     defaults: { _controller: PagesBundle:Pages:page }
+
+menu:
+    path:     /menu
+    defaults: { _controller: PagesBundle:Pages:menu }
+
+404:
+    path:     /404
+    defaults: { _controller: PagesBundle:Pages:notFound }

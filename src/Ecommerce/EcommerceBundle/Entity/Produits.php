@@ -183,7 +183,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setMedia(\Ecommerce\EcommerceBundle\Entity\Media $media)
+    public function setMedia(Media $media)
     {
         $this->media = $media;
 
@@ -207,7 +207,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setTva(\Ecommerce\EcommerceBundle\Entity\Tva $tva)
+    public function setTva(Tva $tva)
     {
         $this->tva = $tva;
 
@@ -231,7 +231,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setCategorie(\Ecommerce\EcommerceBundle\Entity\Categories $categorie)
+    public function setCategorie(Categories $categorie)
     {
         $this->categorie = $categorie;
 

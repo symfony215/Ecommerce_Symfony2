@@ -1,23 +1,27 @@
 produits:
-    pattern:     /
+    path:     /
     defaults: { _controller: EcommerceBundle:Produits:produits }
 
 presentation:
-    pattern:     /produit
+    path:     /produit/{id}
     defaults: { _controller: EcommerceBundle:Produits:presentation }
 
 panier:
-    pattern:     /panier
+    path:     /panier
     defaults: { _controller: EcommerceBundle:Panier:panier }
 
 livraison:
-    pattern:     /panier/livraison
+    path:     /panier/livraison
     defaults: { _controller: EcommerceBundle:Panier:livraison }
 
 validation:
-    pattern:     /panier/validation
+    path:     /panier/validation
     defaults: { _controller: EcommerceBundle:Panier:validation }
 
-test:
-    path:     /test
-    defaults: { _controller: EcommerceBundle:Test:testForm }
+all_categories:
+    path:     /all
+    defaults: { _controller: EcommerceBundle:Categories:allCategories }
+
+produitsCategorie:
+    path:     /ProduitsCategorie/{id}
+    defaults: { _controller: EcommerceBundle:Produits:categorie }

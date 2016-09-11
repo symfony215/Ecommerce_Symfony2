@@ -6,13 +6,29 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ProduitsController extends Controller
 {
-    public function produitsAction()
+
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function categorieAction($id)
     {
-        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig');
+        $produits = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->findByCategorie($id);
+
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits'=>$produits));
     }
 
-    public function presentationAction()
+    public function produitsAction()
     {
-        return $this->render('EcommerceBundle:Default:produits/layout/presentation.html.twig');
+        $produits = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->findAll();
+
+        return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits'=>$produits));
+    }
+
+    public function presentationAction($id)
+    {
+        $produit = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->find($id);
+
+        return $this->render('EcommerceBundle:Default:produits/layout/presentation.html.twig', array('produit'=>$produit));
     }
 }
