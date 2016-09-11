@@ -2,6 +2,7 @@
 
 namespace Ecommerce\EcommerceBundle\Repository;
 use Doctrine\ORM\EntityRepository;
+use Ecommerce\EcommerceBundle\Entity\Produits;
 
 /**
  * ProduitsRepository
