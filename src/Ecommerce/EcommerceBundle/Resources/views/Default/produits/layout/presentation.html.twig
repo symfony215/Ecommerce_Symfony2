@@ -3,15 +3,20 @@
     <div class="container">
         <div class="row">
 
-            <div class="span3">
+            <div class="col-md-3">
                 {% include '::modulesUsed/navigation.html.twig' %}
             </div>
 
-            <div class="span9">
-                <div class="row">
+            <div class="col-md-9">
+                {% if not produit %}
+                    <div class="alert alert-danger">Ce produit n'existe pas !</div>
+                {% else %}
+
+                    <div class="row">
                     <div class="span5">
                         <img src="{{ produit.media.path }}" alt="{{ produit.media.alt }}" width="470" height="310">
                     </div>
+
 
                     <div class="span4">
                         <h4>{{ produit.nom }}</h4>
@@ -35,7 +40,7 @@
 
                     </div>
                 </div>
-
+                {% endif %}
 
             </div>
         </div>

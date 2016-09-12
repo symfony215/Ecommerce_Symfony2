@@ -1,0 +1,9 @@
+<form method="post" action="{{ path('search') }}" class="form-inline">
+    <div class="form-group">
+        {{ form_widget(form.search) }}
+        <button type="button" class="btn btn-p">
+            <span class="glyphicon glyphicon-search"></span> Recherche
+        </button>
+        {{ form_widget(form) }}
+    </div>
+</form>

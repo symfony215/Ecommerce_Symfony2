@@ -17,8 +17,23 @@ class ProduitsRepository extends EntityRepository
         $qb = $this->createQueryBuilder('p')
             ->select('p')
             ->where('p.categorie = :categorie')
+            ->andWhere('p.disponible = :t')
             ->orderBy('p.id')
+            ->setParameter('t',true )
             ->setParameter('categorie',$id );
+
+        return $qb->getQuery()->getResult();
+    }
+    
+    public function search($string)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.nom LIKE :s')
+            ->andWhere('p.disponible = :t')
+            ->orderBy('p.id')
+            ->setParameter('t',true )
+            ->setParameter('s','%'.$string.'%' );
 
         return $qb->getQuery()->getResult();
     }

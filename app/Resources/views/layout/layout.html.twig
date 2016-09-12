@@ -2,69 +2,105 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.css') }}" />
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+        <title>{% block title %}E-Shop!{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
+        <style>
+            .thumbnail {
+                padding: 0 0 15px 0;
+                border: solid;
+                border-radius: 10px;
+                border-color: lightgrey;
+            }
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <button class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse" type="button">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="brand" href="{{ path('produits') }}">DevAndClick</a>
-                    <div class="nav-collapse collapse">
-                        <form class="navbar-form form-search pull-right">
-                            <input id="Search" name="Search" type="text" class="input-medium search-query">
-                            <button type="submit" class="btn">Rechercher</button>
-                        </form>
-                    </div>
+            /* Black buttons with extra padding and without rounded borders */
+            .btn {
+                padding: 5px 10px;
+                transition: .2s;
+                color: #f1f1f1;
+            }
+
+            .btn-p
+            {
+                background-color: dodgerblue;
+            }
+
+            .btn-s
+            {
+                background-color: #880000;
+            }
+
+            /* On hover, the color of .btn will transition to white with black text */
+            .btn:hover, .btn:focus {
+                background-color: #8e8e93;
+                color: #222222;
+            }
+
+            .footer-inverse{
+                background-color: #222222;
+            }
+
+            .footer-inverse p{
+                color: whitesmoke;
+            }
+
+            .footer-inverse h4{
+                color: #C82829;
+            }
+        </style>
+
+    </head>
+    <body style="padding-top:65px">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" style="color: #C82829;font-family: 'Roboto Slab';font-size: x-large" href="{{ path('produits') }}">E-Shop!</a>
+                </div>
+                <div class="nav navbar-nav navbar-right" style="padding-top:8px">
+                    {% render(controller('EcommerceBundle:Produits:renderForm')) %}
                 </div>
             </div>
-        </div>
+        </nav>
         {% block body %}{% endblock %}
 
         <hr />
 
-        <footer id="footer" class="vspace20">
+        <footer id="footer" class="footer-inverse">
             <div class="container">
                 <div class="row">
-                    <div class="span4 offset1">
+                    <div class="col-md-4 offset1">
                         <h4>Informations</h4>
                         <ul class="nav nav-stacked">
                             {% render(controller('PagesBundle:Pages:menu')) %}
                         </ul>
                     </div>
 
-                    <div class="span4">
+                    <div class="col-md-4">
                         <h4>Notre entrepôt</h4>
-                        <p><i class="icon-map-marker"></i>&nbsp;Paris 75 000 - 3 rue des jardins</p>
+                        <p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}</p>
                     </div>
 
-                    <div class="span2">
+                    <div class="col-md-2">
                         <h4>Nous contacter</h4>
-                        <p><i class="icon-phone"></i>&nbsp;Tel: 02 35 00 00 00</p>
-                        <p><i class="icon-print"></i>&nbsp;Fax: 02 35 00 00 00</p>
+                        <p><i class="icon-phone"></i>&nbsp;Tel: {{ telephone }}</p>
+                        <p><i class="icon-print"></i>&nbsp;Fax: {{ fax }}</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="span4">
-                        <p>&copy; Copyright 2014 - DevAndClick</p>
+                    <div class="col-md-4">
+                        <p>&copy; Copyright {{ 'now'|date('Y') }} - DevAndClick</p>
                     </div>
                 </div>
             </div>
         </footer>
-        <script src="{{ asset('js/jquery-1.10.0.min.js') }}"></script>
-        <script src="{{  asset('js/bootstrap.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         {% block javascript %}{% endblock %}
     </body>
 </html>

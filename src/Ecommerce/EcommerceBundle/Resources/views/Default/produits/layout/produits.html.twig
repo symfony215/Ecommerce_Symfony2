@@ -2,45 +2,68 @@
 {% block body %}
     <div class="container">
         <div class="row">
-
-
-            <div class="span3">
+            <div class="col-md-3">
                 {% include '::modulesUsed/panier.html.twig' %}
                 {% include '::modulesUsed/utilisateur.html.twig' %}
                 {% include '::modulesUsed/navigation.html.twig' %}
             </div>
 
-            <div class="span9">
-                <ul class="thumbnails">
+            <div class="col-md-9">
+
+                {% if categorieNotFound is defined %}
+                    <div class="alert alert-danger">Cette catégorie n'existe pas !</div>
+                {% elseif not produits %}
+                    {% if search is defined %}
+                        <div class="alert alert-warning">Aucun produit ne correspond à votre recherche! </div>
+                    {% else %}
+                        <div class="alert alert-warning">Aucun produit dans le stock! </div>
+                    {%  endif %}
+                {% else %}
 
                     {% for produit in produits %}
-
-                    <li class="span3">
+                    <div class="col-sm-4">
                         <div class="thumbnail">
-                            <img src="{{ produit.media.path }}" alt="{{ produit.media.alt }}" width="300" height="150">
+                            <img src="{{ produit.media.path }}" alt="{{ produit.media.alt }}" height="150" width="300">
                             <div class="caption">
                                 <h4>{{ produit.nom }}</h4>
                                 <p>{{ produit.prixHT }} €</p>
-                                <a class="btn btn-primary" href="{{ path('presentation',{ 'id': produit.id }) }}">Plus d'infos</a>
-                                <a class="btn btn-success" href="{{ path('panier') }}">Ajouter au panier</a>
+                                <a class="btn btn-p" href="{{ path('presentation',{ 'id': produit.id }) }}">Plus d'infos</a>
+                                <a class="btn btn-s" href="{{ path('panier') }}">Ajouter au panier</a>
                             </div>
                         </div>
-                    </li>
-
+                    </div>
                     {% endfor %}
 
-                </ul>
 
-                <div class="pagination">
-                    <ul>
-                        <li class="disabled"><span>Précédent</span></li>
-                        <li class="disabled"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">Suivant</a></li>
-                    </ul>
-                </div>
 
+                    {#<ul class="list-inline">#}
+                        {#{% for produit in produits %}#}
+                            {#<li class="col-md-4">#}
+                                {#<div class="">#}
+                                    {#<img src="{{ produit.media.path }}" alt="{{ produit.media.alt }}" class="thumbnail" height="150" width="300">#}
+                                    {#<div class="caption">#}
+                                        {#<h4>{{ produit.nom }}</h4>#}
+                                        {#<p>{{ produit.prixHT }} €</p>#}
+                                        {#<a class="btn btn-primary" href="{{ path('presentation',{ 'id': produit.id }) }}">Plus d'infos</a>#}
+                                        {#<a class="btn btn-success" href="{{ path('panier') }}">Ajouter au panier</a>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</li>#}
+
+                        {#{% endfor %}#}
+
+                    {#</ul>#}
+
+                    <div>
+                        <ul class="pagination">
+                            <li class="disabled"><span>Précédent</span></li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">Suivant</a></li>
+                        </ul>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
