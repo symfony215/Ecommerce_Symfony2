@@ -4,67 +4,69 @@
 <div class="container">
     <div class="row">
 
-    <div class="span3">
-        {% include 'UsersBundle:Default:modulesUsed/userPanel.html.twig' %}
-        {% include '::modulesUsed/panier.html.twig' %}
-    </div>
-
-    <div class="span9">
+    <div class="col-md-12">
         <h2>Livraison</h2>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-                <div class="span4">
-                    <form action="{{ path('validation') }}">
-                        <h4 class="radio">Adresses de livraisons</h4>
-                        <label class="radio">
-                            3b rue jules paulo, 75 000 Paris
-                            <a href="#"><i class="icon-trash"></i></a>
-                            <a href="#"><i class="icon-refresh"></i></a>
-                        </label>
-                        <label class="radio">
-                            3b rue jules paulo, 75 000 Paris
-                            <a href="#"><i class="icon-trash"></i></a>
-                            <a href="#"><i class="icon-refresh"></i></a>
-                        </label>
-                        <label class="radio">
-                            3b rue jules paulo, 75 000 Paris
-                            <a href="#"><i class="icon-trash"></i></a>
-                            <a href="#"><i class="icon-refresh"></i></a>
-                        </label>
-                    </form>
+        <hr>
+        <div class="col-md-6">
+            <form action="{{ path('validation') }}">
+                <h4><strong>Adresses de livraisons</strong></h4>
+                <br>
+                <label class="radio">
+                    3b rue jules paulo, 75 000 Paris
+                    <a href="#"><i class="icon-trash"></i></a>
+                    <a href="#"><i class="icon-refresh"></i></a>
+                </label>
+                <label class="radio">
+                    3b rue jules paulo, 75 000 Paris
+                    <a href="#"><i class="icon-trash"></i></a>
+                    <a href="#"><i class="icon-refresh"></i></a>
+                </label>
+                <label class="radio">
+                    3b rue jules paulo, 75 000 Paris
+                    <a href="#"><i class="icon-trash"></i></a>
+                    <a href="#"><i class="icon-refresh"></i></a>
+                </label>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h4><strong>Ajouter une nouvelle adresse</strong></h4>
+            <br>
+            <form>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" id="adresse" name="adresse" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="ville">Ville</label>
+                    <input type="text" id="ville" name="ville" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="zip">Code postal</label>
+                    <input type="text" id="zip" name="zip" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="pays">Pays</label>
+                    <input type="text" id="pays" name="pays" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="tel">Téléphone</label>
+                    <input type="tel" id="tel" name="tel" class="form-control">
                 </div>
 
-                <div class="span4">
-                    <h4>Ajouter une nouvelle adresse</h4>
-                    <form>
-                        <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom">
-
-                        <label for="prenom">Prénom</label>
-                        <input type="text" id="prenom" name="prenom">
-
-                        <label for="adresse">Adresse</label>
-                        <input type="text" id="adresse" name="adresse">
-
-                        <label for="ville">Ville</label>
-                        <input type="text" id="ville" name="ville">
-
-                        <label for="zip">Code postal</label>
-                        <input type="text" id="zip" name="zip">
-
-                        <label id="pays">Pays</label>
-                        <input type="text" id="pays" name="pays">
-
-                        <label id="tel">Téléphone</label>
-                        <input type="tel" id="tel" name="tel">
-
-                        <br />
-                        <button class="btn btn-primary">Ajouter</button>
-                    </form>
-                </div>
-            </div>
+                <button class="btn btn-primary">Ajouter</button>
+            </form>
         </div>
     </div>
 </div>
 </div>
+    <hr/>
 {% endblock %}
