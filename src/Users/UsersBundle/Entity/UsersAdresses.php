@@ -24,7 +24,7 @@ class UsersAdresses
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
@@ -38,7 +38,7 @@ class UsersAdresses
     /**
      * @var string
      *
-     * @ORM\Column(name="telephone", type="string", length=30, unique=true)
+     * @ORM\Column(name="telephone", type="string", length=30)
      */
     private $telephone;
 
@@ -73,7 +73,7 @@ class UsersAdresses
     /**
      * @var string
      *
-     * @ORM\Column(name="complement", type="string", length=255)
+     * @ORM\Column(name="complement", type="string", length=255,nullable=true)
      */
     private $complement;
 

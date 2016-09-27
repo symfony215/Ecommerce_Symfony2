@@ -2,8 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}E-Shop!{% endblock %}</title>
+        <title>E-Shop!{% block title %}{% endblock %}</title>
         <meta charset="utf-8">
+        <meta name="keywords" content="{% block keywords %}shop,E-shop,E-commerce-buy-shop-online-shopping-fruits-vegetables-legumes {% endblock %}">
+        <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
@@ -12,9 +14,9 @@
         <style>
             .thumbnail {
                 padding: 0 0 15px 0;
-                border: solid;
-                border-radius: 10px;
-                border-color: lightgrey;
+                border: none;
+                border-radius: 0px;
+                background-color: lightgrey ;
             }
 
             /* Black buttons with extra padding and without rounded borders */
@@ -24,20 +26,9 @@
                 color: #f1f1f1;
             }
 
-            .btn-p
-            {
-                background-color: dodgerblue;
-            }
-
             .btn-s
             {
                 background-color: #880000;
-            }
-
-            /* On hover, the color of .btn will transition to white with black text */
-            .btn:hover, .btn:focus {
-                background-color: #8e8e93;
-                color: #222222;
             }
 
             .footer-inverse{
@@ -51,32 +42,76 @@
             .footer-inverse h4{
                 color: #C82829;
             }
+
+            html {
+                position: relative;
+                min-height: 100%;
+            }
+            body {
+                /* Margin bottom by footer height */
+                margin-bottom: 60px;
+                padding-top:65px
+            }
+            .footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+
+            body h2{
+                color: #880000;
+            }
+
+            body h4{
+                color: darkcyan;
+            }
+
         </style>
 
     </head>
-    <body style="padding-top:65px">
-
+    <body>
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" style="color: #C82829;font-family: 'Roboto Slab';font-size: x-large" href="{{ path('produits') }}">E-Shop!</a>
                 </div>
-                <div class="nav navbar-nav navbar-right" style="padding-top:8px">
-                    {% render(controller('EcommerceBundle:Produits:renderForm')) %}
-                </div>
+
+                <ul class="nav navbar-nav navbar-right" style="padding-top:8px">
+                    <li style="margin-right:1em;padding-top:1px">
+                        <div class="dropdown">
+                            <button class="btn btn-s dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Paneau d'utilisateur
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    {% include 'UsersBundle:Default:modulesUsed/userPanel.html.twig' %}
+                                {% else %}
+                                    {% include 'UsersBundle:Default:modulesUsed/utilisateur.html.twig' %}
+                                {% endif %}
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li>
+                        {{ render(controller('EcommerceBundle:Produits:renderForm')) }}
+                    </li>
+                </ul>
             </div>
         </nav>
+
         {% block body %}{% endblock %}
+        <br>
+        <hr/>
+        <br>
 
-        <hr />
-
-        <footer id="footer" class="footer-inverse">
+        <footer id="footer" class="footer footer-inverse">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 offset1">
                         <h4>Informations</h4>
                         <ul class="nav nav-stacked">
-                            {% render(controller('PagesBundle:Pages:menu')) %}
+                            {{  render(controller('PagesBundle:Pages:menu')) }}
                         </ul>
                     </div>
 

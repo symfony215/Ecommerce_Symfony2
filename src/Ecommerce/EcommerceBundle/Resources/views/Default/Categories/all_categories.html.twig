@@ -1,4 +1,4 @@
-<li><a href="{{ path('produits') }}">Tous les produits</a></li>
+<li><a href="{{ path('produits') }}">Tous nos produits</a></li>
 {% for categorie in categories %}
-<li><a href="{{ path('produitsCategorie',{ 'id' : categorie.id }) }}">{{ categorie.nom }}</a></li>
+<li><a href="{{ path('produitsCategorie',{ 'categorie' : categorie.id }) }}">{{ categorie.nom }}</a></li>
 {% endfor %}

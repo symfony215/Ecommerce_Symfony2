@@ -2,11 +2,13 @@
 
 {% block body %}
     <div class="container">
+        <br>
         {% if app.request.hasPreviousSession %}
             {% for type, messages in app.session.flashbag.all() %}
                 {% for message in messages %}
-                    <div class="flash-{{ type }}" >
-                        <strong>{{ message }}</strong>
+                    <div class="alert alert-warning flash-{{ type }}" >
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Attention !</strong> {{ message }}
                     </div>
                 {% endfor %}
             {% endfor %}
@@ -15,5 +17,5 @@
         {% block fos_user_content %}
         {% endblock fos_user_content %}
     </div>
-
+    <br><br>
 {% endblock %}

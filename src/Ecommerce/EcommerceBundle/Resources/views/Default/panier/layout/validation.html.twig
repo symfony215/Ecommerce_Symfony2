@@ -1,12 +1,16 @@
 {% extends '::layout/layout.html.twig' %}
+
+{% block title %} - Validation{% endblock %}
+{% block description %}validation de produits commandés par le client.{% endblock %}
+
 {% block body %}
 
     <div class="container">
         <div class="row">
-            <div class="span3">
+            <div class="col-md-3">
                 {% include '::modulesUsed/navigation.html.twig' %}
             </div>
-            <div class="span9">
+            <div class="col-md-9">
                 <h2>Valider mon parnier</h2>
                 <form>
                     <table class="table table-striped table-hover">
@@ -14,45 +18,68 @@
                         <tr>
                             <th>Références</th>
                             <th>Quantité</th>
-                            <th>Prix unitaire</th>
+                            <th>Prix unitaire HT</th>
                             <th>Total HT</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>AB29837</td>
-                            <td>
-                                2
-                            </td>
-                            <td>333,33€</td>
-                            <td>333,33€</td>
-                        </tr>
-                        <tr>
-                            <td>AC34423</td>
-                            <td>
-                                1
-                            </td>
-                            <td>333,33€</td>
-                            <td>666,66€</td>
-                        </tr>
+
+                            {% for produit in commande.commande.produits %}
+
+                                <tr>
+                                    <td>{{ produit.reference }}</td>
+                                    <td>{{ produit.quantity }}</td>
+                                    <td>{{ produit.prixHT }} €</td>
+                                    <td>{{ produit.prixHT * produit.quantity }} €</td>
+                                </tr>
+
+                            {% endfor %}
+
                         </tbody>
                     </table>
                 </form>
+                <hr/>
+                <div class="row">
 
-                <dl class="dl-horizontal pull-right">
-                    <dt>Total HT :</dt>
-                    <dd>799,99€</dd>
+                    <dl class="col-md-4 dl-horizontal pull-right">
+                        <dt>Total HT :</dt>
+                        <dd>{{ commande.commande.totalHT }} €</dd>
 
-                    <dt>TVA :</dt>
-                    <dd>200€</dd>
+                        <dt>TVA :</dt>
+                        <dd>{{ commande.commande.tva }} €</dd>
 
-                    <dt>Total:</dt>
-                    <dd>999,99€ TTC</dd>
-                </dl>
-                <div class="clearfix"></div>
-                <a href="#" class="btn btn-success pull-right">Payer</a>
+                        <dt>Total TTC :</dt>
+                        <dd>{{ commande.commande.totalTTC }} €</dd>
+                    </dl>
+                    <div class="col-md-4">
+                        <h4>Adresse de livraison</h4>
+                        <strong>{{ commande.commande.livraison.nom }} {{ commande.commande.livraison.prenom }}</strong><br>
+                        <em>{{ commande.commande.livraison.adresse }}, {{ commande.commande.livraison.cp }} {{ commande.commande.livraison.ville }} - {{ commande.commande.livraison.pays }}.</em>
+                        <br><br>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h4>Adresse de facturation</h4>
+                        <strong>{{ commande.commande.facturation.nom }} {{ commande.commande.facturation.prenom }}</strong><br/>
+                        <em>{{ commande.commande.facturation.adresse }}, {{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}.</em>
+                    </div>
+
+                    <br><br>
+                </div>
+
+                <form method="post" action="{{ path('validationCommande',{ 'id':commande.id}) }}">
+                    <input type="hidden" name="token" value="{{ commande.commande.token }}"/>
+                    <input type="hidden" name="prix" value="{{ commande.commande.totalTTC }}"/>
+                    <input type="hidden" name="date" value="{{ commande.date|date('dmyhms') }}"/>
+                    <button type="submit" class="btn btn-success pull-right">Payer</button>
+                </form>
+
+                <div class="row">
+
+                    <a href="{{ path('livraison') }}" class="btn btn-primary">Retour</a>
+                </div>
+
             </div>
-
         </div>
     </div>
 {% endblock %}

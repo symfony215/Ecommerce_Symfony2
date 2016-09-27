@@ -45,9 +45,9 @@ class Commandes
     /**
      * @var string
      *
-     * @ORM\Column(name="produits", type="array")
+     * @ORM\Column(name="commande", type="array")
      */
-    private $produits;
+    private $commande;
 
     /**
      * @ORM\ManyToOne(targetEntity="Users\UsersBundle\Entity\User",inversedBy="commandes")
@@ -145,9 +145,9 @@ class Commandes
      *
      * @return Commandes
      */
-    public function setProduits($produits)
+    public function setCommande($commande)
     {
-        $this->produits = $produits;
+        $this->commande = $commande;
 
         return $this;
     }
@@ -157,9 +157,9 @@ class Commandes
      *
      * @return string
      */
-    public function getProduits()
+    public function getCommande()
     {
-        return $this->produits;
+        return $this->commande;
     }
 
 

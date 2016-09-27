@@ -11,4 +11,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommandesRepository extends EntityRepository
 {
+    
+    public function byFacture($user)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c')
+            ->where('c.user = :u')
+            ->andWhere('c.valider = 1')
+            ->andWhere('c.reference != 0')
+            ->orderBy('c.date')
+            ->setParameter('u',$user );
+
+        return $qb->getQuery()->getResult();
+    }
+    
 }

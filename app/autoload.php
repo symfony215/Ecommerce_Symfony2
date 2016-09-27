@@ -10,9 +10,8 @@ $loader = require __DIR__.'/../vendor/autoload.php';
 
 AnnotationRegistry::registerLoader(array($loader, 'loadClass'));
 
-$loader->register(array(
+$loader->add('FOS',__DIR__.'/../vendor/bundles');
 
-    'FOS' => __DIR__.'/../vendor/bundles',
-));
+$loader->register();
 
 return $loader;

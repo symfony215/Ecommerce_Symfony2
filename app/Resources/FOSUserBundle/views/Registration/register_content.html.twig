@@ -1,27 +1,42 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="row">
-    <div class="span12">
-        <h2>Connexion</h2>
-        <div id="collapseOne" class="accordion-body collapse in">
-            <div class="accordion-inner">
-                <div class="span4">
-                    <h4>Pas encore inscrit ?</h4>
-                    <em>
-                        nous vous invitons à vous inscrire<br />
-                        afin de passer votre commande et de manger équilibré.
-                    </em>
-                </div>
+    <div class="col-md-12">
+        <h2><strong>Connexion</strong></h2>
+        <hr>
+        <div class="col-md-4">
+            <h4><strong>Pas encore inscrit ?</strong></h4>
+            <em>
+                nous vous invitons à vous inscrire<br />
+                afin de passer votre commande et de manger équilibré.
+            </em>
+        </div>
 
-                <div class="span4 offset2">
-                    <h4>Inscription</h4>
-                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-                    {{ form_widget(form) }}
-                    <br>
-                    <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
-                    {{ form_end(form) }}
-                </div>
+        <div class="col-md-4 offset2">
+            <h4><strong>Inscription</strong></h4>
+            <br>
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            <div class="form-group">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email,{'attr': {'class': 'form-control'}}) }}
             </div>
+            <div class="form-group">
+                {{ form_label(form.username) }}
+                {{ form_widget(form.username,{'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first,{'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second,{'attr': {'class': 'form-control'}}) }}
+            </div>
+
+            {{ form_rest(form) }}
+            <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+            {{ form_end(form) }}
         </div>
     </div>
 </div>
+

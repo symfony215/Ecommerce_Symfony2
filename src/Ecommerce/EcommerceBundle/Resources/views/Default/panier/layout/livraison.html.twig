@@ -1,77 +1,114 @@
 {% extends '::layout/layout.html.twig' %}
+
+{% block title %} - Livraison{% endblock %}
+{% block description %}Livraison des produits commandés par le client.{% endblock %}
+
 {% block body %}
 
     <div class="container">
-    <div class="row">
-        <div class="span12">
+        <div class="row">
             <h2>Livraison</h2>
-            <div id="collapseOne" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                    <div class="span4">
-                        <form action="{{ path('validation') }}">
-                            <h4>Adresse de livraison</h4>
-                            <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                3b rue jules paulo, 75 000 Paris <a href="#"><i class="icon-trash"></i></a>
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                4b rue jules paulo, 75 000 Paris <a href="#"><i class="icon-trash"></i></a>
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                                5b rue jules paulo, 75 000 Paris <a href="#"><i class="icon-trash"></i></a>
-                            </label>
-
-                            <br /><br />
-
-                            <h4>Adresse de facturation</h4>
-                            <label class="radio">
-                                <input type="radio" name="optionsRadios2" id="optionsRadios1" value="option1" checked="">
-                                3b rue jules paulo, 75 000 Paris <a href="#"><i class="icon-trash"></i></a>
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="optionsRadios2" id="optionsRadios1" value="option1" checked="">
-                                4b rue jules paulo, 75 000 Paris <a href="#"><i class="icon-trash"></i></a>
-                            </label>
-                            <label class="radio">
-                                <input type="radio" name="optionsRadios2" id="optionsRadios1" value="option1" checked="">
-                                5b rue jules paulo, 75 000 Paris <a href="#"><i class="icon-trash"></i></a>
-                            </label>
-                            <button class="btn btn-primary">Valider mon adresse de livraison</button>
-                        </form>
-                    </div>
-
-
-                    <div class="span4 offset2">
-                        <h4>Ajouter une nouvelle adresse</h4>
-                        <form>
-                            <label>Nom</label>
-                            <input type="text">
-
-                            <label>Prénom</label>
-                            <input type="text">
-
-                            <label>Adresse</label>
-                            <input type="text">
-
-                            <label>Ville</label>
-                            <input type="text">
-
-                            <label>Code postal</label>
-                            <input type="text">
-
-                            <label>Ville</label>
-                            <input type="text">
-
-                            <label>Téléphone</label>
-                            <input type="text">
-
-                            <br />
-                            <button class="btn btn-primary">Ajouter</button>
-                        </form>
-                    </div>
+            <hr>
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 </div>
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="alert alert-danger">
+                    {{ flashMessage }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            {% endfor %}
+
+            <div class="col-md-6">
+                {% if not user.adresses %}
+                    <div class="alert alert-danger">
+                        Aucune adresse de livraison existe, Veuillez donner une adresse valide !
+                    </div>
+                {% else %}
+                    <form action="{{ path('validation') }}" method="post">
+                        <h4>Adresse de livraison</h4>
+
+                        {% for adresse in user.adresses %}
+                            <label class="radio">
+                                <input type="radio" name="livraison" {% if loop.index == 1 %}checked{% endif %} value="{{ adresse.id }}">
+                                {{ adresse.adresse }}, {{ adresse.cp }} {{  adresse.ville }}
+                                <a href="{{ path('LivraisonAdresseSuppression',{ 'id': adresse.id}) }}"><i class="icon-trash"></i></a>
+                                <br>
+                                {{ adresse.nom }} {{ adresse.prenom }}
+                            </label>
+                        {% endfor %}
+                        <br>
+                        <br>
+                        <h4>Adresse de facturation</h4>
+
+                        {% for adresse in user.adresses %}
+                            <label class="radio">
+                                <input type="radio" name="facturation" {% if loop.index == 1 %}checked{% endif %} value="{{ adresse.id }}">
+                                {{ adresse.adresse }}, {{ adresse.cp }} {{  adresse.ville }}
+                                <a href="{{ path('LivraisonAdresseSuppression',{ 'id': adresse.id}) }}"><i class="icon-trash"></i></a>
+                                <br>
+                                {{ adresse.nom }} {{ adresse.prenom }}
+                            </label>
+                        {% endfor %}
+                        <br>
+                        <button class="btn btn-primary">Valider mes adresses</button>
+                    </form>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6 offset2">
+                <h4>Ajouter une nouvelle adresse</h4>
+                <form class="col-md-10" action="{{ path('livraison') }}" method="post">
+
+                    <div class="form-group">
+                        {{ form_label(form.nom) }}
+                        {{ form_widget(form.nom,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.prenom,'Prénom') }}
+                        {{ form_widget(form.prenom,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.telephone,'Téléphone') }}
+                        {{ form_widget(form.telephone,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.adresse) }}
+                        {{ form_widget(form.adresse,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.ville) }}
+                        {{ form_widget(form.ville,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.cp,'Code Postal') }}
+                        {{ form_widget(form.cp,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.pays) }}
+                        {{ form_widget(form.pays,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form_label(form.complement,'Complément') }}
+                        {{ form_widget(form.complement,{'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    {{ form_rest(form) }}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>

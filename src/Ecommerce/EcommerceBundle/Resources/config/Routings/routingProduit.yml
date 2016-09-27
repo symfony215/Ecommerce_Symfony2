@@ -7,8 +7,8 @@ presentation:
     defaults: { _controller: EcommerceBundle:Produits:presentation }
 
 produitsCategorie:
-    path:     /ProduitsCategorie/{id}
-    defaults: { _controller: EcommerceBundle:Produits:categorie }
+    path:     /ProduitsCategorie/{categorie}
+    defaults: { _controller: EcommerceBundle:Produits:produits }
 
 all_categories:
     path:     /all
