@@ -35,7 +35,7 @@ class CommandesController extends Controller
 
             $prixTTC = round($prixHT / $produit->getTva()->getMultiplicate(),2);
 
-            $tva += $prixHT * $produit->getTva()->getValeur()/100;
+            $tva += round($prixHT * $produit->getTva()->getValeur()/100,2);
 
             $totalHT += $prixHT;
 

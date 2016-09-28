@@ -15,7 +15,7 @@ class ProduitsController extends Controller
         $route = $request->attributes->get('_route');
         
         if($categorie != null)
-            $produits = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->findByCategorie($categorie);
+            $findProduits = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->findByCategorie($categorie);
 
         else if( $route == 'produitsCategorie' )
         {
@@ -24,7 +24,7 @@ class ProduitsController extends Controller
                     'produits'=>null));
         }
         else
-            $produits = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->findBy(array('disponible'=>1));
+            $findProduits = $this->getDoctrine()->getRepository('EcommerceBundle:Produits')->findBy(array('disponible'=>1));
 
         $session = $request->getSession();
 
@@ -32,6 +32,9 @@ class ProduitsController extends Controller
             $panier = $session->get('panier');
         else
             $panier = false;
+
+
+        $produits =  $this->get('knp_paginator')->paginate($findProduits, $request->query->get('page', 1)/*page number*/, 6/*limit per page*/);
 
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits'=>$produits,'panier'=>$panier));
     }

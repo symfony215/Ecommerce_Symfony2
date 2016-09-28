@@ -1,4 +1,5 @@
 {% extends '::layout/layout.html.twig' %}
+
 {% block body %}
     <div class="container">
         <div class="row">
@@ -49,15 +50,10 @@
                     {% endfor %}
                     </div>
                     <div class="row pull-right">
-                        <ul class="pagination">
-                            <li class="disabled"><span>Précédent</span></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">Suivant</a></li>
-                        </ul>
+                        {{ knp_pagination_render(produits) }}
                     </div>
                 {% endif %}
+
             </div>
         </div>
     </div>
