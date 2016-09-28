@@ -92,5 +92,10 @@ class Categories
         return $this->media;
     }
 
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
 
 }
