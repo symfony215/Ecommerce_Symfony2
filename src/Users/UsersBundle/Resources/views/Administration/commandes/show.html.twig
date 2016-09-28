@@ -1,0 +1,33 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Commandes</h2>
+    <hr>
+    <table class="table table-striped table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande.id }}</td>
+            </tr>
+            <tr>
+                <th>Valider</th>
+                <td>{% if commande.valider %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if commande.date %}{{ commande.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Reference</th>
+                <td>{{ commande.reference }}</td>
+            </tr>
+            <tr>
+                <th>Commande</th>
+                <td>{% if commande.commande %}{{ commande.commande|join(', ') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('adminCommandes_index') }}">Retour</a>
+
+{% endblock %}

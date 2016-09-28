@@ -1,0 +1,27 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Création des pages</h2>
+    <hr>
+    <div class="row">
+        {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.titre) }}
+            {{ form_widget(form.titre) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.contenu) }}
+            {{ form_widget(form.contenu) }}
+        </div>
+
+        <input class="btn btn-success pull-right" type="submit" value="Create" />
+        {{ form_end(form) }}
+    </div>
+
+    <div class="row">
+        <a class="btn btn-primary" href="{{ path('adminPages_index') }}">Retour</a>
+    </div>
+
+{% endblock %}

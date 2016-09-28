@@ -18,7 +18,7 @@
                 {% else %}
                     <div class="row">
                         <div class="col-md-6">
-                            <img src="{{ produit.media.path }}" alt="{{ produit.media.alt }}" style="max-height:100%;max-width: 100%">
+                            <img src="{{ asset(produit.media.assetPath) }}" alt="{{ produit.media.name }}" style="max-height:100%;max-width: 100%">
                         </div>
 
                         <div class="col-md-6">

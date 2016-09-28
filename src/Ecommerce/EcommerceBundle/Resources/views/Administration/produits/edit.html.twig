@@ -1,0 +1,62 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Edition de Produits</h2>
+    <hr>
+    <div class="row">
+
+        {{ form_start(edit_form) }}
+
+        <div class="form-group col-md-6">
+            {{ form_label(edit_form.nom) }}
+            {{ form_widget(edit_form.nom) }}
+        </div>
+        <div class="form-group  col-md-10">
+            {{ form_label(edit_form.description) }}
+            {{ form_widget(edit_form.description) }}
+        </div>
+        <div class="form-group col-md-7">
+            {{ form_label(edit_form.prixHT) }}
+            {{ form_widget(edit_form.prixHT) }}
+        </div>
+        <div class="checkbox col-md-7">
+            <label>{{ form_widget(edit_form.disponible) }}Disponible</label>
+        </div>
+        <div class="form-group col-md-10">
+            {{ form_label(edit_form.media) }}
+            <div class="row well" style="padding-left: 4em">
+                <div class="form-group col-md-12">
+                    {{ form_label(edit_form.media.file) }}
+                    {{ form_widget(edit_form.media.file) }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form_label(edit_form.media.name) }}
+                    {{ form_widget(edit_form.media.name) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            {{ form_label(edit_form.tva) }}
+            {{ form_widget(edit_form.tva, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form_label(edit_form.categorie) }}
+            {{ form_widget(edit_form.categorie, {'attr': {'class' : 'form-control'}}) }}
+        </div>
+        <input class="btn btn-success pull-left" type="submit" value="Editer" />
+        {{ form_end(edit_form) }}
+    </div>
+<br>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-primary pull-left" href="{{ path('adminProduits_index') }}">Retour</a>
+        </div>
+
+        <div class="col-md-6">
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </div>
+
+    </div>
+{% endblock %}

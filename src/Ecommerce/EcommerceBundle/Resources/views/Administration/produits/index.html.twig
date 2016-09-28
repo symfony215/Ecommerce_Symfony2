@@ -1,0 +1,34 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Produits list</h2>
+    <hr>
+    <table class="table table-striped table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>PrixHT</th>
+                <th>Disponible</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.nom }}</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.prixHT }}</td>
+                <td>{% if produit.disponible %}Oui{% else %}Non{% endif %}</td>
+                <td>
+                    <a href="{{ path('adminProduits_show', { 'id': produit.id }) }}"><i class="icon-eye-open"></i></a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{{ path('adminProduits_edit', { 'id': produit.id }) }}"><i class="icon-edit"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('adminProduits_new') }}"><i class="icon-star"></i>&nbsp;&nbsp;Nouveau produit</a>
+{% endblock %}

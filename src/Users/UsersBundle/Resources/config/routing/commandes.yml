@@ -1,0 +1,12 @@
+adminCommandes_index:
+    path:     /
+    defaults: { _controller: "UsersBundle:CommandesAdmin:index" }
+    methods:  GET
+
+adminCommandes_show:
+    path:     /{id}/show
+    defaults: { _controller: "UsersBundle:CommandesAdmin:show" }
+    methods:  GET
+
+
+

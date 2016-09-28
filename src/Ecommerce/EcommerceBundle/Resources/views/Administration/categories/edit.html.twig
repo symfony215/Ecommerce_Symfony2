@@ -1,0 +1,41 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Edition de catégories</h2>
+    <hr>
+    <div class="row">
+        {{ form_start(edit_form) }}
+        <div class="form-group col-md-6">
+            {{ form_label(edit_form.nom) }}
+            {{ form_widget(edit_form.nom) }}
+        </div>
+        <div class="form-group col-md-12">
+            {{ form_label(edit_form.media) }}
+            <div class="row well" style="padding-left: 4em">
+                <div class="form-group col-md-12">
+                    {{ form_label(edit_form.media.file) }}
+                    {{ form_widget(edit_form.media.file) }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form_label(edit_form.media.name) }}
+                    {{ form_widget(edit_form.media.name) }}
+                </div>
+            </div>
+        </div>
+
+        <input class="btn btn-success pull-left" type="submit" value="Editer" />
+        {{ form_end(edit_form) }}
+    </div>
+    <br>
+   <div class="row">
+       <div class="col-md-6">
+           <a class="btn btn-primary pull-left" href="{{ path('adminCategories_index') }}">Retour</a>
+       </div>
+       <div class="col-md-6">
+           {{ form_start(delete_form) }}
+           <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+           {{ form_end(delete_form) }}
+       </div>
+   </div>
+
+{% endblock %}

@@ -3,71 +3,140 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Facture</title>
-    <link href="{{ asset('css/facture.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        body{
+            padding: 2em;
+        }
+
+        h1
+        {
+            font-size: 3em;
+        }
+        p{
+            padding-left: 2em;
+        }
+        .underline
+        {
+            text-decoration: underline;
+        }
+        .center {
+            text-align:center;
+        }
+
+        .color {
+            color:#002a80;
+        }
+
+        .strong {
+            font-weight:bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0px 0;
+        }
+
+        th {
+            padding-right: 15px;
+        }
+
+        tfoot tr{
+            background-color: gainsboro;
+        }
+
+        thead tr{
+            background-color: coral;
+        }
+
+        table#entity {
+            margin-top:30px;
+            text-align:center;
+        }
+
+        table#entity th {
+            height:30px;
+            border-bottom:1px solid #002a80;
+        }
+
+        table#entity td {
+            height:30px;
+            border-bottom:1px solid #002a80;
+        }
+
+        .rightSide{
+            border-right:1px solid #002a80;
+        }
+
+        .leftSide{
+            border-left:1px solid #002a80;
+        }
+    </style>
 </head>
-
 <body>
-<h1 style="text-align: center">E-Shop!</h1>
 
-    <h2 style="color: orangered;text-align: center">Facture</h2>
+    <main>
+        <div>
+            <h1 style="color: #880000">E-Shop!</h1>
+            <div style="width:50%;padding-left:50%">
+                <h2 class="center underline" style="color: coral;">Facture</h2>
+                <strong style="color: coral">détails</strong>
+                <p>Date :<span class="color">{{ facture.date|date('d-m-Y') }}</span></p>
+                <p>Ref :<span class="color">{{ facture.reference }}</span></p>
 
-    <div>
-        <p>Date :<span class="color">{{ facture.date|date('d-m-Y') }}</span></p>
-        <p>Ref :<span class="color">{{ facture.reference }}</span></p>
+                <strong style="color: coral">Coordonnées</strong>
+                <p>Nom :<span class="color">{{ facture.commande.facturation.nom }} {{ facture.commande.facturation.prenom }}</span></p>
+                <p>Adresse :<span class="color">{{ facture.commande.facturation.adresse}} , {{ facture.commande.facturation.cp }} {{ facture.commande.facturation.ville }} - {{ facture.commande.facturation.pays }}</span></p>
+            </div>
+        </div>
 
-        <strong style="color: orangered">Coordonnées</strong>
-        <p>Nom :<span class="color">{{ facture.commande.facturation.nom }} {{ facture.commande.facturation.prenom }}</span></p>
-        <p>Adresse :<span class="color">{{ facture.commande.facturation.adresse}} , {{ facture.commande.facturation.cp }} {{ facture.commande.facturation.ville }} - {{ facture.commande.facturation.pays }}</span></p>
 
-        <br>
-        <br>
-    </div>
-
-    <table id="entity">
-        <thead>
-            <tr>
-                <td>DESIGNATION</td>
-                <td>QUANTITE</td>
-                <td>P.U - HT</td>
-                <td>MONTANT HT</td>
-                <td>MONTANT TTC</td>
+        <table id="entity">
+            <thead >
+            <tr style="background-color: coral">
+                <th>DESIGNATION</th>
+                <th>QUANTITE</th>
+                <th>P.U - HT</th>
+                <th>MONTANT HT</th>
+                <th>MONTANT TTC</th>
             </tr>
-        </thead>
+            </thead>
 
-        <tbody>
+            <tbody>
             {% for produit in facture.commande.produits %}
                 <tr>
-                    <td class="color">{{ produit.reference }}</td>
+                    <td class="color leftSide">{{ produit.reference }}</td>
                     <td class="color">{{ produit.quantity }}</td>
                     <td class="color">{{ produit.prixHT }} €</td>
                     <td class="color">{{ produit.prixHT * produit.quantity }} €</td>
-                    <td class="color">{{ produit.prixTTC }} €</td>
+                    <td class="color rightSide">{{ produit.prixTTC }} €</td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
-
-    <table id="total">
-        <tr>
-            <td width="110">TOTAL HT :</td>
-            <td width="100" class="color">{{ facture.commande.totalHT }} €</td>
-        </tr>
-            <tr>
-                <td width="110">TVA :</td>
-                <td width="100" class="color">{{ facture.commande.tva }} €</td>
+            </tbody>
+            <tfoot>
+            <tr style="background-color: gainsboro;">
+                <td class="leftSide" colspan="2">TOTAL HT :</td>
+                <td colspan="5" class="color rightSide">{{ facture.commande.totalHT }} €</td>
             </tr>
-        <tr>
-            <td width="110">TOTAL TTC :</td>
-            <td width="100" class="color">{{ facture.commande.totalTTC }} €</td>
-        </tr>
-    </table>
+            <tr style="background-color: gainsboro;">
+                <td colspan="2" class="leftSide">TVA :</td>
+                <td colspan="5" class="color rightSide">{{ facture.commande.tva }} €</td>
+            </tr>
+            <tr style="background-color: gainsboro;">
+                <td colspan="2" class="leftSide">TOTAL TTC :</td>
+                <td colspan="5" class="color rightSide">{{ facture.commande.totalTTC }} €</td>
+            </tr>
+            </tfoot>
+        </table>
+    </main>
 
-<footer >
-    <br><br><br>
-    <br><br><br>
-    <hr><br>
-    <span class="color strong">{{ adresse }}</span> <p>             {{ telephone }}</p>
-</footer>
+    <footer>
+        <br>
+        <br>
+        <br>
+        <span class="color strong">{{ adresse }}</span>
+        <br>
+        {{ telephone }}
+    </footer>
 
 </body>
 </html>

@@ -1,0 +1,35 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Edition des pages</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                {{ form_label(edit_form.titre) }}
+                {{ form_widget(edit_form.titre) }}
+            </div>
+            <br>
+            <div class="form-group">
+                {{ form_label(edit_form.contenu) }}
+                {{ form_widget(edit_form.contenu) }}
+            </div>
+
+            <input class="btn btn-success pull-left" type="submit" value="Editer" />
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn-primary btn" href="{{ path('adminPages_index') }}">Retour</a>
+        </div>
+        <div class="col-md-6">
+            {{ form_start(delete_form) }}
+            <input class="btn pull-right btn-danger" type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+
+{% endblock %}

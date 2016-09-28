@@ -1,3 +1,7 @@
+users_adminCommandes:
+    resource: "@UsersBundle/Resources/config/routing/commandes.yml"
+    prefix:   /admin/commandes
+
 adresses:
     path:     /profile/adresses
     defaults: { _controller: UsersBundle:User:adresses }

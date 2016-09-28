@@ -36,6 +36,9 @@ class ProduitsController extends Controller
 
         $produits =  $this->get('knp_paginator')->paginate($findProduits, $request->query->get('page', 1)/*page number*/, 6/*limit per page*/);
 
+        if($categorie != null)
+            return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('categorie'=>$categorie,'produits'=>$produits,'panier'=>$panier));
+
         return $this->render('EcommerceBundle:Default:produits/layout/produits.html.twig', array('produits'=>$produits,'panier'=>$panier));
     }
 

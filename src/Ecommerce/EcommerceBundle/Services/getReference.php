@@ -1,5 +1,4 @@
 <?php
-use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * Created by PhpStorm.
