@@ -2,15 +2,6 @@
 
 {% block body %}
     <div class="container">
-
-        <div class="jumbotron">
-            {% if categorie is defined %}
-                <img src="{{ categorie.media.path }}" alt="{{ categorie.media.name }}" style="width: 100%">
-            {% else %}
-                <img src="http://i.huffpost.com/gen/1724512/images/o-FRUITS-LEGUMES-facebook.jpg" alt="Fruits et légumes" style="width: 100%">
-            {% endif %}
-        </div>
-
         <div class="row">
             <div class="col-md-3">
 
@@ -44,7 +35,7 @@
                     <div class="col-sm-4">
                         <div class="thumbnail">
                             <div class="caption">
-                                <img src="{{ asset(produit.media.assetPath) }}" alt="{{ produit.media.name }}" style="max-height:100%;max-width: 100%" height="150" width="300">
+                                <img src="{{ produit.media.assetPath | imagine_filter('produitThumb') }}" alt="{{ produit.media.name }}" style="max-height:100%;max-width: 100%" height="150" width="300">
                             </div>
                                 <div class="caption">
                                 <h4><strong>{{ produit.nom }}</strong></h4>
