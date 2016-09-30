@@ -21,6 +21,12 @@
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 </div>
             {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('warning') %}
+                <div class="alert alert-warning">
+                    {{ flashMessage }}
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                </div>
+            {% endfor %}
             {% for flashMessage in app.session.flashbag.get('error') %}
                 <div class="alert alert-error">
                     {{ flashMessage }}

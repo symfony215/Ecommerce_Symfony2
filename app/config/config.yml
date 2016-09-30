@@ -49,6 +49,23 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        produitThumb:
+            quality: 80
+            filters:
+                thumbnail: { size: [245, 150], mode: inset }
+
+        produit:
+            quality: 75
+            filters:
+                thumbnail: { size: [409, 409], mode: inset }
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
@@ -79,6 +96,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
+    encryption: "%mailer_encryption%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"

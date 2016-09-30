@@ -1,0 +1,33 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Listes des utilisateurs</h2>
+    <hr>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.adresses|length != 0 %}
+                        <a href="{{ path('adminUsers_adresses', { 'id': user.id }) }}" title="Consulter les adresses"><i class="icon-home"></i></a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    {% endif %}
+                    {% if user.commandes|length != 0 %}
+                        <a href="{{ path('adminUsers_factures', { 'id': user.id }) }}" title="Consulter les factures"><i class="icon-money"></i></a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

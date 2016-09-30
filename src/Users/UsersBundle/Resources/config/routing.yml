@@ -2,6 +2,15 @@ users_adminCommandes:
     resource: "@UsersBundle/Resources/config/routing/commandes.yml"
     prefix:   /admin/commandes
 
+users_adminUsers:
+    resource: "@UsersBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/users
+
+users_admin:
+    path:     /admin
+    defaults: { _controller: "UsersBundle:UserAdmin:admin" }
+    methods:  GET
+
 adresses:
     path:     /profile/adresses
     defaults: { _controller: UsersBundle:User:adresses }

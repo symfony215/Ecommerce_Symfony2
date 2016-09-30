@@ -34,7 +34,6 @@ class CommandesAdminController extends Controller
      */
     public function showAction(Commandes $commande)
     {
-        
         return $this->render('UsersBundle:Administration:commandes/show.html.twig', array(
             'commande' => $commande,
         ));

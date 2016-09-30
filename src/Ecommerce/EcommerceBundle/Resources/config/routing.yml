@@ -13,4 +13,3 @@ ecommerce_adminProduits:
 ecommerce_adminCategories:
     resource: "@EcommerceBundle/Resources/config/routing/categories.yml"
     prefix:   /admin/categories
-

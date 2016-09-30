@@ -84,9 +84,8 @@ class CommandesController extends Controller
             $commande = $session->get('commande');
 
         /* @var $commande Commandes*/
-
         $commande->setDate(new \DateTime());
-        $commande->setUser($this->get('security.token_storage')->getToken()->getUser());
+        $commande->setUser($this->getUser());
         $commande->setValider(false);
         $commande->setReference(0);
         $commande->setCommande($this->facture($request));
@@ -94,26 +93,37 @@ class CommandesController extends Controller
         if(!$session->has('commande'))
         {
             $em->persist($commande);
-            $session->set('commande',$commande );
         }
-
+        
+        $session->set('commande',$commande );
         $em->flush();
 
         return new Response($commande->getId());
     }
 
-    public function validationCommandeAction(Request $request,$id )
+    public function validationCommandeAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $commande = $em->getRepository('UsersBundle:Commandes')->find($id);/* @var  $commande Commandes */
+        $commande = $this->getDoctrine()->getRepository('UsersBundle:Commandes')->find($id);
+        
+        if($commande == null)
+            throw $this->createNotFoundException("Cette commande d'id : ".$id." n'existe pas");
+        elseif ($commande->getValider() == true)
+        {
+            $sess = new Session();
+            $sess->getFlashBag()->add('warning','Votre commande est déjà validée !' );
+            return $this->redirectToRoute('facture');
+        }
 
-        if($commande == null || $commande->getValider() == true)
-            return $this->redirectToRoute('404');
-
+        /**
+         * @var $commande Commandes
+         */
         $commande->setValider(1);
         $commande->setReference($this->container->get('setNewReference')->reference());//Service
         $em->flush();
+
+        $this->sendEmail($commande);
 
         $session = $request->getSession();
         $session->remove('adresse');
@@ -124,5 +134,21 @@ class CommandesController extends Controller
 
         $sess->getFlashBag()->add('success','Votre commande est validé avec succès !' );
         return $this->redirectToRoute('facture');
+    }
+
+    public function sendEmail(Commandes $commande)
+    {
+        $host = $_SERVER['SERVER_NAME'];
+
+        //mailing
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Validation de commande')
+            ->setFrom("DeveloperElSam@gmail.com")
+            ->setTo($commande->getUser()->getEmailCanonical())
+            ->setCharset('utf-8')
+            ->setBody($this->renderView('UsersBundle:Default:layout/swiftLayout.html.twig',
+                array('user'=>$commande->getUser(),'host'=>$host)),'text/html');
+
+        $this->get('mailer')->send($message);
     }
 }

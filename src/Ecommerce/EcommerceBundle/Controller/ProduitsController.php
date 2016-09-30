@@ -3,7 +3,7 @@
 namespace Ecommerce\EcommerceBundle\Controller;
 
 use Ecommerce\EcommerceBundle\Entity\Categories;
-use Ecommerce\EcommerceBundle\Forms\searchType;
+use Ecommerce\EcommerceBundle\Form\searchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

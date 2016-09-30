@@ -122,7 +122,7 @@ class  PanierController extends Controller
 
     public function livraisonAction(Request $request)
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user = $this->getUser();
         $form = $this->createForm(UsersAdressesType::class,new UsersAdresses());
 
         $form->handleRequest($request);
@@ -144,7 +144,7 @@ class  PanierController extends Controller
         return $this->render('EcommerceBundle:Default:panier/layout/livraison.html.twig',array('user'=>$user,'form'=>$form->createView()));
     }
 
-    public function setLivraisononSession(Request $request)
+    public function setLivraisonOnSession(Request $request)
     {
         $session = $request->getSession();
         
@@ -168,7 +168,7 @@ class  PanierController extends Controller
     public function validationAction(Request $request)
     {
         if($request->getMethod() == 'POST')
-            $this->setLivraisononSession($request);
+            $this->setLivraisonOnSession($request);
 
         $prepareCommande = $this->forward('UsersBundle:Commandes:prepareCommande');
         /* @var $commande Commandes */
