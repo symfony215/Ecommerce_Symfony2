@@ -35,14 +35,11 @@ class GeneratePDF
         $pdf->SetFont('helvetica', '', 10, '', true);
         $pdf->AddPage();
 
-        $filename = 'facture - '.$facture->getReference();
-
         $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
-        $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly
 
-        $response = new Response();
-        $response->headers->set('Content-type','application/pdf');
+        return $pdf;
+        
+//        $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly
 
-        return $response;
     }
 }

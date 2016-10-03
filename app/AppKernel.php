@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

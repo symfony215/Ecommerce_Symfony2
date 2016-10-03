@@ -3,6 +3,7 @@
 namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Categories
@@ -25,6 +26,8 @@ class Categories
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=100, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $nom;
 

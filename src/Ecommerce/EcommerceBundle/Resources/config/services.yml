@@ -14,3 +14,9 @@ services:
       arguments: ['@service_container','@session']
       tags:
         - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    languageListener:
+      class: Ecommerce\EcommerceBundle\Listener\LanguageListener
+      arguments: ['@session','%kernel.default_locale%']
+      tags:
+        - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

@@ -23,9 +23,9 @@ class ProduitsType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class,array('attr'=>array('class'=>'form-control')))
-            ->add('description',TextareaType::class,array('attr'=>array('class'=>'form-control')))
-            ->add('prixHT',NumberType::class,array('label'=>'PrixHT','attr'=>array('class'=>'form-control')))
-            ->add('disponible',CheckboxType::class)
+            ->add('description',TextareaType::class,array("required"=>false,'attr'=>array('class'=>'form-control')))
+            ->add('prixHT',TextType::class,array('label'=>'PrixHT','attr'=>array('class'=>'form-control')))
+            ->add('disponible',CheckboxType::class,array("required"=>false))
             ->add('media',MediaType::class)
             ->add('tva')
             ->add('categorie')

@@ -3,12 +3,11 @@
 <div class="row">
 
     <div class="col-md-3">
-        {% include 'UsersBundle:Default:modulesUsed/userPanel.html.twig' %}
-        {% include '::modulesUsed/panier.html.twig' %}
+        {{  render(controller('EcommerceBundle:Panier:menu')) }}
     </div>
 
     <div class="col-md-9">
-        <h2>Modifier mes informations</h2>
+        <h2>{{ 'edit_myProfile'|trans }}</h2>
         <hr>
 
         <div class="col-md-4">

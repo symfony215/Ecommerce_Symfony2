@@ -1,7 +1,7 @@
 {% extends 'layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h2>Edition de Produits</h2>
+    <h2>{{ 'products_edition'|trans }}</h2>
     <hr>
     <div class="row">
 
@@ -10,17 +10,20 @@
         <div class="form-group col-md-6">
             {{ form_label(edit_form.nom) }}
             {{ form_widget(edit_form.nom) }}
+            <strong style="color: red">{{ form_errors(edit_form.nom) }}</strong>
         </div>
         <div class="form-group  col-md-10">
             {{ form_label(edit_form.description) }}
             {{ form_widget(edit_form.description) }}
+            <strong style="color: red">{{ form_errors(edit_form.description) }}</strong>
         </div>
         <div class="form-group col-md-7">
             {{ form_label(edit_form.prixHT) }}
             {{ form_widget(edit_form.prixHT) }}
+            <strong style="color: red">{{ form_errors(edit_form.prixHT) }}</strong>
         </div>
         <div class="checkbox col-md-7">
-            <label>{{ form_widget(edit_form.disponible) }}Disponible</label>
+            <label>{{ form_widget(edit_form.disponible) }}{{ 'available'|trans }}</label>
         </div>
         <div class="form-group col-md-10">
             {{ form_label(edit_form.media) }}
@@ -28,10 +31,12 @@
                 <div class="form-group col-md-12">
                     {{ form_label(edit_form.media.file) }}
                     {{ form_widget(edit_form.media.file) }}
+                    <strong style="color: red">{{ form_errors(edit_form.media.file) }}</strong>
                 </div>
                 <div class="form-group col-md-6">
                     {{ form_label(edit_form.media.name) }}
                     {{ form_widget(edit_form.media.name) }}
+                    <strong style="color: red">{{ form_errors(edit_form.media.name) }}</strong>
                 </div>
             </div>
         </div>
@@ -43,18 +48,18 @@
             {{ form_label(edit_form.categorie) }}
             {{ form_widget(edit_form.categorie, {'attr': {'class' : 'form-control'}}) }}
         </div>
-        <input class="btn btn-success pull-left" type="submit" value="Editer" />
+        <input class="btn btn-success pull-left" type="submit" value="{{ 'edit'|trans }}" />
         {{ form_end(edit_form) }}
     </div>
 <br>
     <div class="row">
         <div class="col-md-6">
-            <a class="btn btn-primary pull-left" href="{{ path('adminProduits_index') }}">Retour</a>
+            <a class="btn btn-primary pull-left" href="{{ path('adminProduits_index') }}">{{ 'back'|trans }}</a>
         </div>
 
         <div class="col-md-6">
             {{ form_start(delete_form) }}
-            <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+            <input class="btn btn-danger pull-right" type="submit" value="{{ 'delete'|trans }}">
             {{ form_end(delete_form) }}
         </div>
 

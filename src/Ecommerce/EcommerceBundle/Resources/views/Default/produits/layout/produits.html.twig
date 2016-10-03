@@ -19,12 +19,12 @@
                 {% endfor %}
 
                 {% if categorieNotFound is defined %}
-                    <div class="alert alert-danger">Cette catégorie n'existe pas !</div>
+                    <div class="alert alert-danger">{{ 'no_such_category'|trans }}</div>
                 {% elseif not produits %}
                     {% if search is defined %}
-                        <div class="alert alert-warning">Aucun produit ne correspond à votre recherche! </div>
+                        <div class="alert alert-warning">{{ 'no_search_result'|trans }}</div>
                     {% else %}
-                        <div class="alert alert-warning">Aucun produit dans le stock! </div>
+                        <div class="alert alert-warning">{{ 'no_product_in_stock'|trans }} </div>
                     {%  endif %}
                 {% else %}
                     
@@ -35,14 +35,15 @@
                     <div class="col-sm-4">
                         <div class="thumbnail">
                             <div class="caption">
-                                <img src="{{ produit.media.assetPath | imagine_filter('produitThumb') }}" alt="{{ produit.media.name }}" style="max-height:100%;max-width: 100%" height="150" width="300">
+                                <img src="{{ produit.media.assetPath | imagine_filter('produitThumb') }}"
+                                     alt="{{ produit.media.name }}" style="max-height:100%;max-width: 100%" height="150" width="300">
                             </div>
                                 <div class="caption">
                                 <h4><strong>{{ produit.nom }}</strong></h4>
                                 <p>{{ produit.prixHT|tva(produit.tva.multiplicate) }} €</p>
-                                <a class="btn btn-primary" href="{{ path('presentation',{ 'id': produit.id }) }}">Plus d'infos</a>
+                                <a class="btn btn-primary" href="{{ path('presentation',{ 'id': produit.id }) }}">{{ 'more_info'|trans }}</a>
                                 {% if panier[produit.id] is not defined %}
-                                     <a class="btn btn-s" href="{{ path('ajouterAuPanier',{ 'id': produit.id }) }}">Ajouter au panier</a>
+                                     <a class="btn btn-s" href="{{ path('ajouterAuPanier',{ 'id': produit.id }) }}">{{ 'add_to_cart'|trans }}</a>
                                 {% endif %}
                             </div>
                         </div>

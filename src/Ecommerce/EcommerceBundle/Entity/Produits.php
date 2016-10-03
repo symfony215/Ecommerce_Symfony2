@@ -3,6 +3,7 @@
 namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Produits
@@ -25,6 +26,8 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=100, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $nom;
 
@@ -39,6 +42,7 @@ class Produits
      * @var float
      *
      * @ORM\Column(name="prixHT", type="float")
+     * @Assert\Type(type="float")
      */
     private $prixHT;
 

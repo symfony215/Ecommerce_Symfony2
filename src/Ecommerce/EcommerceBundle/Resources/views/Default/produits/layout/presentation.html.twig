@@ -14,7 +14,7 @@
 
             <div class="col-md-9">
                 {% if not produit %}
-                    <div class="alert alert-danger">Ce produit n'existe pas !</div>
+                    <div class="alert alert-danger">{{ 'product_doesnt_existence'|trans }}</div>
                 {% else %}
                     <div class="row">
                         <div class="col-md-6">
@@ -30,7 +30,7 @@
                             {% if panier is defined %}
 
                                 <div class="alert alert-success">
-                                    Ce produit est déjà dans votre <a href="{{ path('panier') }}">panier </a> !
+                                   {{ 'already_exist_in_cart'|trans }} <a href="{{ path('panier') }}">{{ 'cart'|trans }}</a> !
                                 </div>
 
                             {% else %}
@@ -45,7 +45,7 @@
                                 </select>
                                 <br><br>
                                 <div>
-                                    <button type="submit" class="btn btn-p">Ajouter au panier</button>
+                                    <button type="submit" class="btn btn-success">{{ 'add_to_cart'|trans }}</button>
                                 </div>
                             </form>
 

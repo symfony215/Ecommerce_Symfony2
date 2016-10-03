@@ -11,15 +11,16 @@
                 {% include '::modulesUsed/navigation.html.twig' %}
             </div>
             <div class="col-md-9">
-                <h2>Valider mon parnier</h2>
+                <h2>{{ 'validate_cart'|trans }}</h2>
+                <hr>
                 <form>
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>
-                            <th>Références</th>
-                            <th>Quantité</th>
-                            <th>Prix unitaire HT</th>
-                            <th>Total HT</th>
+                            <th>{{ 'reference'|trans }}</th>
+                            <th>{{ 'quantity'|trans }}</th>
+                            <th>{{ 'unit_price_ht'|trans }}</th>
+                            <th>{{ 'ht_total'|trans }}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -41,28 +42,29 @@
                 <hr/>
                 <div class="row">
 
-                    <dl class="col-md-4 dl-horizontal pull-right">
-                        <dt>Total HT :</dt>
-                        <dd>{{ commande.commande.totalHT }} €</dd>
-
-                        <dt>TVA :</dt>
-                        <dd>{{ commande.commande.tva }} €</dd>
-
-                        <dt>Total TTC :</dt>
-                        <dd>{{ commande.commande.totalTTC }} €</dd>
-                    </dl>
                     <div class="col-md-4">
-                        <h4>Adresse de livraison</h4>
+                        <h4>{{ 'shippingAddress'|trans }}</h4>
                         <strong>{{ commande.commande.livraison.nom }} {{ commande.commande.livraison.prenom }}</strong><br>
                         <em>{{ commande.commande.livraison.adresse }}, {{ commande.commande.livraison.cp }} {{ commande.commande.livraison.ville }} - {{ commande.commande.livraison.pays }}.</em>
                         <br><br>
                     </div>
 
                     <div class="col-lg-4">
-                        <h4>Adresse de facturation</h4>
+                        <h4>{{ 'paymentAddress'|trans }}</h4>
                         <strong>{{ commande.commande.facturation.nom }} {{ commande.commande.facturation.prenom }}</strong><br/>
                         <em>{{ commande.commande.facturation.adresse }}, {{ commande.commande.facturation.cp }} {{ commande.commande.facturation.ville }} - {{ commande.commande.facturation.pays }}.</em>
                     </div>
+
+                    <dl class="col-md-4 dl-horizontal">
+                        <dt>{{ 'ht_total'|trans }} :</dt>
+                        <dd>{{ commande.commande.totalHT }} €</dd>
+
+                        <dt>{{ 'tva'|trans }} :</dt>
+                        <dd>{{ commande.commande.tva }} €</dd>
+
+                        <dt>{{ 'ttc_total'|trans }} :</dt>
+                        <dd>{{ commande.commande.totalTTC }} €</dd>
+                    </dl>
 
                     <br><br>
                 </div>
@@ -71,12 +73,12 @@
                     <input type="hidden" name="token" value="{{ commande.commande.token }}"/>
                     <input type="hidden" name="prix" value="{{ commande.commande.totalTTC }}"/>
                     <input type="hidden" name="date" value="{{ commande.date|date('dmyhms') }}"/>
-                    <button type="submit" class="btn btn-success pull-right">Payer</button>
+                    <button type="submit" class="btn btn-success pull-right">{{ 'pay'|trans }}</button>
                 </form>
 
                 <div class="row">
 
-                    <a href="{{ path('livraison') }}" class="btn btn-primary">Retour</a>
+                    <a href="{{ path('livraison') }}" class="btn btn-primary">{{ 'back'|trans }}</a>
                 </div>
 
             </div>

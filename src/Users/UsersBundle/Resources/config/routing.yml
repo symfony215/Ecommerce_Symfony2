@@ -26,3 +26,9 @@ validationCommande:
 pdf:
     path:     /downloadFacture/{commande}
     defaults: { _controller: UsersBundle:User:facturePDF }
+
+ville:
+    path:     /ville/{nom}
+    defaults: { _controller: UsersBundle:User:ville }
+    options:
+            expose: true

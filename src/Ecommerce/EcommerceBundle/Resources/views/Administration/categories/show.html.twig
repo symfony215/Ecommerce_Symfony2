@@ -1,7 +1,7 @@
 {% extends 'layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h2>Catégories</h2>
+    <h2>{{ 'categories'|trans }}</h2>
     <hr>
     <div class="row">
         <table class="table table-striped">
@@ -11,7 +11,7 @@
                 <td>{{ category.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>{{ 'name'|trans }}</th>
                 <td>{{ category.nom }}</td>
             </tr>
             </tbody>
@@ -20,16 +20,16 @@
 
     <div class="row">
         <div class="col-lg-4">
-            <a class="btn btn-primary pull-left" href="{{ path('adminCategories_index') }}">Retour</a>
+            <a class="btn btn-primary pull-left" href="{{ path('adminCategories_index') }}">{{ 'back'|trans }}</a>
         </div>
 
         <div class="col-md-4">
-            <a class="btn btn-success pull-right" href="{{ path('adminCategories_edit', { 'id': category.id }) }}">Editer</a>
+            <a class="btn btn-success pull-right" href="{{ path('adminCategories_edit', { 'id': category.id }) }}">{{ 'edit'|trans }}</a>
         </div>
 
         <div class="col-md-4">
             {{ form_start(delete_form) }}
-            <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+            <input class="btn btn-danger pull-right" type="submit" value="{{ 'delete'|trans }}">
             {{ form_end(delete_form) }}
         </div>
 

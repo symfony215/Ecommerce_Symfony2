@@ -9,11 +9,13 @@
             <div class="form-group">
                 {{ form_label(edit_form.titre) }}
                 {{ form_widget(edit_form.titre) }}
+                <strong style="color: red">{{ form_errors(edit_form.titre) }}</strong>
             </div>
             <br>
             <div class="form-group">
                 {{ form_label(edit_form.contenu) }}
                 {{ form_widget(edit_form.contenu) }}
+                <strong style="color: red">{{ form_errors(edit_form.contenu) }}</strong>
             </div>
 
             <input class="btn btn-success pull-left" type="submit" value="Editer" />

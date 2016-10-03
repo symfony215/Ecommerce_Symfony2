@@ -2,20 +2,22 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2><strong>Connexion</strong></h2>
+        <h2><strong>{{ 'inscription'|trans }}</strong></h2>
         <hr>
         <div class="col-md-4">
-            <h4><strong>Pas encore inscrit ?</strong></h4>
+            <h4><strong>{{ 'Not_registered_yet'|trans }} ?</strong></h4>
             <em>
-                nous vous invitons à vous inscrire<br />
-                afin de passer votre commande et de manger équilibré.
+                {{ 'advice'|trans }}
             </em>
         </div>
 
         <div class="col-md-4 offset2">
-            <h4><strong>Inscription</strong></h4>
+            <h4><strong>{{ 'inscription'|trans }}</strong></h4>
             <br>
             {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+            {{ form_errors(form) }}
+
             <div class="form-group">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email,{'attr': {'class': 'form-control'}}) }}

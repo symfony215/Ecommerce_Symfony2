@@ -29,6 +29,7 @@ class Media
      *
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $name;
 
@@ -36,6 +37,8 @@ class Media
      * @var string
      *
      * @ORM\Column(type="string", length=255,nullable=true)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="4")
      */
     private $path;
 

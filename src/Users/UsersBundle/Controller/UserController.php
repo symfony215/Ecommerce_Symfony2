@@ -3,11 +3,39 @@
 namespace Users\UsersBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Users\UsersBundle\Entity\Commandes;
+use Users\UsersBundle\Entity\VillesMaroc;
 
 class UserController extends Controller
 {
+
+    public function villeAction($nom)
+    {
+        $villesObj = $this->getDoctrine()->getRepository('UsersBundle:VillesMaroc')->byNom($nom);
+
+        if($villesObj == null)
+            return null;
+
+        $villes = array();
+
+        $i = 0;
+        /**
+         * @var $value VillesMaroc
+         */
+        foreach ($villesObj as $value)
+        {
+            $villes[$i] = $value->getVille();
+            $i++;
+        }
+
+        $json = new JsonResponse();
+
+        return $json->setData($villes);
+    }
+
+
     public function adressesAction()
     {
         return $this->render('UsersBundle:Default:layout/adresses.html.twig');
@@ -28,9 +56,11 @@ class UserController extends Controller
             return $this->redirectToRoute('facture');
         }
 
-//        return $this->render('UsersBundle:Default:layout/facturePDF.html.twig', array('facture' => $commande));
+        $pdf = $this->container->get('generatePDF')->generatePDF($commande);
 
-        return $this->container->get('generatePDF')->generatePDF($commande);
+        $filename = 'facture - '.$commande->getReference();
+
+        $pdf->Output($filename.".pdf",'I'); // This will output the PDF as a response directly
     }
 
 }

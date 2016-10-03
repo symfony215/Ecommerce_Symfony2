@@ -17,3 +17,7 @@ all_categories:
 search:
     path:     /search
     defaults: { _controller: EcommerceBundle:Produits:search }
+
+localSet:
+    path:     /locale/{_locale}
+    defaults: { _controller: EcommerceBundle:Produits:language }

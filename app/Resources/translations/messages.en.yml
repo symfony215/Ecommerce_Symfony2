@@ -1,0 +1,32 @@
+previous: Previous
+next: Next
+delete: Delete
+edit: Edit
+back: Back
+articles: Article|Articles
+shipping: Shipping
+shippingAddress: 'Shipping address'
+paymentAddress: 'Payment address'
+add_shippingAdress: 'Add a new shipping address'
+add: Add
+validateAdress: 'Validate my addresses'
+name: Last name
+firstName: Fist name
+city: City
+country: Country
+zip: 'Zip code'
+phone: Phone
+Address: Address
+complement: 'Additionary info'
+Footer.infos: Information
+Footer.stock: 'Our warehouse'
+Footer.phone: 'Phone'
+Footer.fax: 'Fax'
+admin.products: 'Products'
+admin.categories: 'Categories'
+newF: New
+newM: New
+cart: 'Shopping cart'
+our_products: 'Our products'
+
+

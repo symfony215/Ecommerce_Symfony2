@@ -3,6 +3,7 @@
 namespace Pages\PagesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Pages
@@ -25,6 +26,8 @@ class Pages
      * @var string
      *
      * @ORM\Column(name="titre", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $titre;
 
@@ -32,6 +35,8 @@ class Pages
      * @var string
      *
      * @ORM\Column(name="contenu", type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min="10")
      */
     private $contenu;
 

@@ -1,0 +1,33 @@
+previous: Précédent
+next: Suivant
+delete: Supprimer
+edit: Editer
+back: Retour
+articles: Article|Articles
+shipping: Livraison
+shippingAddress: 'Adresse de livraison'
+paymentAddress: 'Adresse de facturation'
+add_shippingAdress: 'Ajouter une nouvelle adresse'
+add: Ajouter
+validateAdress: 'Valider mes adresses'
+name: Nom
+firstName: Prénom
+city: Ville
+country: Pays
+zip: 'Code postal'
+phone: Téléphone
+Address: Adresse
+complement: Complement
+Footer.infos: Informations
+Footer.stock: 'Notre entrepôt'
+Footer.phone: 'Tél'
+Footer.fax: 'Fax'
+admin.products: 'Produits'
+admin.categories: 'Catégories'
+newF: Nouvelle
+newM: Nouveau
+cart: Panier
+our_products: 'Nos produits'
+
+
+

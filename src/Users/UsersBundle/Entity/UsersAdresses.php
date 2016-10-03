@@ -3,6 +3,7 @@
 namespace Users\UsersBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * UsersAdresses
@@ -25,6 +26,8 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $nom;
 
@@ -32,6 +35,8 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $prenom;
 
@@ -39,6 +44,8 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="telephone", type="string", length=30)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="10")
      */
     private $telephone;
 
@@ -46,6 +53,8 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="adresse", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="5")
      */
     private $adresse;
 
@@ -53,6 +62,8 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="cp", type="string", length=10)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="5")
      */
     private $cp;
 
@@ -60,6 +71,7 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="pays", type="string", length=30)
+     * @Assert\NotBlank()
      */
     private $pays;
 
@@ -67,6 +79,8 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3")
      */
     private $ville;
 
@@ -74,6 +88,7 @@ class UsersAdresses
      * @var string
      *
      * @ORM\Column(name="complement", type="string", length=255,nullable=true)
+     * @Assert\Blank()
      */
     private $complement;
 

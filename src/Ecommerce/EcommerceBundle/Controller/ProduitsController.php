@@ -10,6 +10,21 @@ use Symfony\Component\HttpFoundation\Request;
 class ProduitsController extends Controller
 {
 
+    public function languageAction(Request $request)
+    {
+        $locale = $request->getLocale();
+
+        $request->getSession()->set('_locale', $locale);
+
+        $referer = $request->headers->get('referer');
+
+        if (empty($referer)) {
+            throw $this->createNotFoundException('Referer not found');
+        }
+
+        return $this->redirect($referer);
+    }
+
     public function produitsAction(Request $request,Categories $categorie = null)
     {
         $route = $request->attributes->get('_route');

@@ -1,0 +1,41 @@
+categorie_edition: 'Edition de catégorie'
+list_categories: 'Liste des catégories'
+categorie: 'catégorie'
+catgorie_creation: 'Création de catégorie'
+create: Créer
+categories: Catégories
+products_edition: 'Edition de produit'
+available: disponible
+list_products: 'Liste de produits'
+description: Description
+product: Produit
+product_creation: 'Création de produit'
+products: Porduits
+price_ht: prixHT
+yes: Oui
+no: Non
+all_products: 'Tous nos produits'
+your_cart: 'Votre panier'
+reference: Référence
+quantity: Quantité
+unit_price_ht: 'Prix unitaire HT'
+ht_total: 'Total HT'
+no_product_in_cart: 'Pas de produits dans votre panier'
+tva: TVA
+ttc_total: 'Total TTC'
+validate_cart: 'Valider mon panier'
+continue_shopping: 'Continuer mes achats'
+search: Recherche
+noShippingAddress: 'Aucune adresse de livraison existe, Veuillez donner une adresse valide !'
+no_such_category: "Cette catégorie n'existe pas !"
+no_search_result: 'Aucun produit ne correspond à votre recherche!'
+no_product_in_stock: 'Aucun produit dans le stock!'
+more_info: "Plus d'infos"
+add_to_cart: 'Ajouter au panier'
+product_doesnt_existence: "Ce produit n'existe pas !"
+already_exist_in_cart: 'Ce produit est déjà dans votre'
+pay: Payer
+bills: Factures
+date: Date
+price_ttc: Prix TTC
+no_bills: 'Aucune facture actuellement.'

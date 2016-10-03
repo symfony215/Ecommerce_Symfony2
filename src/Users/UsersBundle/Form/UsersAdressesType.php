@@ -18,14 +18,14 @@ class UsersAdressesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom',TextType::class)
-            ->add('prenom',TextType::class)
-            ->add('telephone',TextType::class)
-            ->add('adresse',TextareaType::class)
-            ->add('ville',TextType::class)
-            ->add('cp',TextType::class)
-            ->add('pays',CountryType::class)
-            ->add('complement',TextareaType::class,array('required'=>false))
+            ->add('nom',TextType::class, array('label'=>'form.name'))
+            ->add('prenom',TextType::class, array('label'=>'form.firstName'))
+            ->add('telephone',TextType::class, array('label'=>'form.phone'))
+            ->add('adresse',TextareaType::class, array('label'=>'form.Address'))
+            ->add('ville',TextType::class, array('label'=>'form.city'))
+            ->add('cp',TextType::class, array('label'=>'form.zip'))
+            ->add('pays',CountryType::class, array('label'=>'form.country'))
+            ->add('complement',TextareaType::class,array('required'=>false,'label'=>'form.complement'))
         ;
     }
     

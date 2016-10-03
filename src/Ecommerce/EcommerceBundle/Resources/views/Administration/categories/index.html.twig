@@ -1,13 +1,13 @@
 {% extends 'layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h2>Liste de catégories</h2>
+    <h2>{{ 'list_categories'|trans }}</h2>
     <hr>
     <div class="row">
         <table class="table table-hover table-striped">
             <thead>
             <tr>
-                <th>Nom</th>
+                <th>{{ 'name'|trans }}</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -26,5 +26,5 @@
         </table>
     </div>
 
-    <a class="btn btn-primary" href="{{ path('adminCategories_new') }}"><i class="icon-star"></i>&nbsp;&nbsp;Nouvelle catégorie</a>
+    <a class="btn btn-primary" href="{{ path('adminCategories_new') }}"><i class="icon-star"></i>&nbsp;&nbsp;{{ 'newF'|trans }}&nbsp;{{ 'categorie'|trans }}</a>
 {% endblock %}

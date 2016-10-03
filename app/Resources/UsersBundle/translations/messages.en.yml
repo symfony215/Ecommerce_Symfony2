@@ -1,0 +1,13 @@
+profile: 'My profile'
+edit_myProfile: 'Edit my profile'
+change_password: 'Change password'
+myBills: 'My bills'
+logout: 'Logout'
+login: 'Login'
+register: 'Register'
+Not_registered_yet: 'Not registered yet'
+advice: 'We invite you to register so you can enjoy our products and eat healthy food.'
+inscription: Registration
+lost_password: 'Lost password'
+recover_pass: 'Reinitialize password'
+adviceLostPass: 'Complet the form, your password will be reinitialized. Once validated, you can login with the new password.'

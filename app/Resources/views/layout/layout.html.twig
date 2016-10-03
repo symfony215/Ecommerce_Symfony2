@@ -8,70 +8,11 @@
         <meta name="description" content="{% block description %}{% endblock %}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.5.0/css/flag-icon.min.css" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
-        {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <style>
-
-            .row.thumbnail
-            {
-                background-color: #880000 ;
-            }
-            .thumbnail {
-                padding: 0 0 15px 0;
-                border: none;
-                border-radius: 0px;
-                background-color: lightgrey ;
-            }
-
-            /* Black buttons with extra padding and without rounded borders */
-            .btn {
-                padding: 5px 10px;
-                transition: .2s;
-                color: #f1f1f1;
-            }
-
-            .btn-s
-            {
-                background-color: #880000;
-            }
-
-            .footer-inverse{
-                background-color: #222222;
-            }
-
-            .footer-inverse p{
-                color: whitesmoke;
-            }
-
-            .footer-inverse h4{
-                color: #C82829;
-            }
-
-            html {
-                position: relative;
-                min-height: 100%;
-            }
-            body {
-                /* Margin bottom by footer height */
-                margin-bottom: 60px;
-                padding-top:65px
-            }
-            .footer {
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-            }
-
-            body h2{
-                color: #880000;
-            }
-
-            body h4{
-                color: darkcyan;
-            }
-
-        </style>
 
     </head>
     <body>
@@ -85,7 +26,7 @@
                     <li style="margin-right:1em;padding-top:1px">
                         <div class="dropdown">
                             <button class="btn btn-s dropdown-toggle" type="button" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Paneau d'utilisateur
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
@@ -96,16 +37,26 @@
                                 {% endif %}
                             </ul>
                         </div>
-
                     </li>
                     <li>
                         {{ render(controller('EcommerceBundle:Produits:renderForm')) }}
+                    </li>
+                    <li style="margin-left: 1em">
+                        <a href="{{ path('localSet',{ '_locale': 'en'}) }}" style="padding: 0" title="English">
+                            <span class="flag-icon flag-icon-gb" style="height:33px;width: 33px"></span>
+                        </a>
+                    </li>
+                    <li style="margin-left: 1em">
+                        <a href="{{ path('localSet',{ '_locale': 'fr'}) }}" style="padding: 0" title="French">
+                            <span class="flag-icon flag-icon-fr" style="height:33px;width: 33px"></span>
+                        </a>
                     </li>
                 </ul>
             </div>
         </nav>
 
         {% block body %}{% endblock %}
+
         <br>
         <hr/>
         <br>
@@ -114,33 +65,36 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 offset1">
-                        <h4>Informations</h4>
+                        <h4>{{ 'Footer.infos'|trans }}</h4>
                         <ul class="nav nav-stacked">
                             {{  render(controller('PagesBundle:Pages:menu')) }}
                         </ul>
                     </div>
 
                     <div class="col-md-4">
-                        <h4>Notre entrepôt</h4>
+                        <h4>{{ 'Footer.stock'|trans }}</h4>
                         <p><i class="icon-map-marker"></i>&nbsp;{{ adresse }}</p>
                     </div>
 
                     <div class="col-md-2">
                         <h4>Nous contacter</h4>
-                        <p><i class="icon-phone"></i>&nbsp;Tel: {{ telephone }}</p>
-                        <p><i class="icon-print"></i>&nbsp;Fax: {{ fax }}</p>
+                        <p><i class="icon-phone"></i>&nbsp;{{ 'Footer.phone'|trans }}: {{ telephone }}</p>
+                        <p><i class="icon-print"></i>&nbsp;{{ 'Footer.fax'|trans }}: {{ fax }}</p>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-4">
-                        <p>&copy; Copyright {{ 'now'|date('Y') }} - EL-Sam</p>
+                        <p>&copy; Copyrights {{ 'now'|date('Y') }} - EL-Sam</p>
                     </div>
                 </div>
             </div>
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js',{'callback':'fos.Router.setData'}) }}"></script>
         {% block javascript %}{% endblock %}
     </body>
 </html>

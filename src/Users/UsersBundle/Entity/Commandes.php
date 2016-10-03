@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Commandes
 {
     /**
-     * @var int
+     * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -22,7 +22,7 @@ class Commandes
     private $id;
 
     /**
-     * @var bool
+     * @var boolean
      *
      * @ORM\Column(name="valider", type="boolean")
      */
@@ -36,7 +36,7 @@ class Commandes
     private $date;
 
     /**
-     * @var int
+     * @var integer
      *
      * @ORM\Column(name="reference", type="integer")
      */
@@ -59,7 +59,7 @@ class Commandes
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -83,7 +83,7 @@ class Commandes
     /**
      * Get valider
      *
-     * @return bool
+     * @return boolean
      */
     public function getValider()
     {
@@ -131,7 +131,7 @@ class Commandes
     /**
      * Get reference
      *
-     * @return int
+     * @return integer
      */
     public function getReference()
     {

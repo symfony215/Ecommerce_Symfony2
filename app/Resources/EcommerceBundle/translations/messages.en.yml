@@ -1,0 +1,26 @@
+no: No
+all_products: 'All Products'
+your_cart: 'Your shopping cart'
+reference: Reference
+quantity: Quantity
+unit_price_ht: 'Unit list price'
+ht_total: 'List Total'
+no_product_in_cart: 'No product in your shopping cart'
+tva: Tax
+ttc_total: 'Net total'
+validate_cart: 'Validate my cart'
+continue_shopping: 'Continue shopping'
+search: Search
+noShippingAddress: 'No shipping address, Please add one !'
+no_such_category: "This category doesn't exist!"
+no_search_result: 'No product found!'
+no_product_in_stock: 'No product in our stock. Please come back later!'
+more_info: 'More info'
+add_to_cart: 'Add to cart'
+product_doesnt_existence: "This product doesn't exist !"
+already_exist_in_cart: 'This product is already in your'
+pay: Pay
+bills: Bills
+date: Date
+price_ttc: 'Net price'
+no_bills: 'No bills for the moment.'

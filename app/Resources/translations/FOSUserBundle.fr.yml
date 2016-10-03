@@ -1,0 +1,14 @@
+profile: 'Mon profile'
+edit_myProfile: 'Editer mon profile'
+change_password: 'Changer mot de passe'
+myBills: 'Mes factures'
+logout: 'Déconnexion'
+login: 'Se connecter'
+register: "S'inscrire"
+Not_registered_yet: 'Pas encore inscrit'
+advice: 'nous vous invitons à vous inscrire afin de passer votre commande et de manger équilibré.'
+inscription: Inscription
+lost_password: 'Mot de passe perdu'
+recover_pass: 'Récupération du mot de passe'
+adviceLostPass: 'Compléter le formulaire, votre mot de passe sera alors réinitialiser. Une fois validé, vous devrez utiliser le nouveau mot de passe que vous avez défini.'
+loginning: Connection

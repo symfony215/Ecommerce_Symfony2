@@ -1,7 +1,7 @@
 {% extends 'layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h2>Produits</h2>
+    <h2>{{ 'products'|trans }}</h2>
     <hr>
     <table class="table table-striped table-hover">
         <tbody>
@@ -10,36 +10,36 @@
                 <td>{{ produit.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
+                <th>{{ 'name'|trans }}</th>
                 <td>{{ produit.nom }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>{{ 'description'|trans }}</th>
                 <td>{{ produit.description }}</td>
             </tr>
             <tr>
-                <th>PrixHT</th>
+                <th>{{ 'price_ht'|trans }}</th>
                 <td>{{ produit.prixHT }}</td>
             </tr>
             <tr>
-                <th>Disponible</th>
-                <td>{% if produit.disponible %}Oui{% else %}Non{% endif %}</td>
+                <th>D{{ 'available'|trans }}</th>
+                <td>{% if produit.disponible %}{{ 'yes'|trans }}{% else %}{{ 'no'|trans }}{% endif %}</td>
             </tr>
         </tbody>
     </table>
 
     <div class="row">
         <div class="col-md-4">
-            <a class="btn btn-primary pull-left" href="{{ path('adminProduits_index') }}">Retour</a>
+            <a class="btn btn-primary pull-left" href="{{ path('adminProduits_index') }}">{{ 'back'|trans }}</a>
         </div>
 
         <div class="col-md-4">
-            <a class="btn btn-success pull-right" href="{{ path('adminProduits_edit', { 'id': produit.id }) }}">Editer</a>
+            <a class="btn btn-success pull-right" href="{{ path('adminProduits_edit', { 'id': produit.id }) }}">{{ 'edit'|trans }}</a>
         </div>
 
         <div class="col-md-4">
             {{ form_start(delete_form) }}
-            <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+            <input class="btn btn-danger pull-right" type="submit" value="{{ 'delete'|trans }}">
             {{ form_end(delete_form) }}
         </div>
 

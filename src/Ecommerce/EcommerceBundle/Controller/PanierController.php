@@ -139,6 +139,8 @@ class  PanierController extends Controller
             $sess = new Session();
 
             $sess->getFlashBag()->add('success','Adresse ajoutée avec succès ! ' );
+            
+            $form = $this->createForm(UsersAdressesType::class,new UsersAdresses());
         }
 
         return $this->render('EcommerceBundle:Default:panier/layout/livraison.html.twig',array('user'=>$user,'form'=>$form->createView()));

@@ -19,8 +19,21 @@ class CommandesRepository extends EntityRepository
             ->where('c.user = :u')
             ->andWhere('c.valider = 1')
             ->andWhere('c.reference != 0')
-            ->orderBy('c.date')
+            ->orderBy('c.date','DESC')
             ->setParameter('u',$user );
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function ByDateCommande($date)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c')
+            ->where('c.date >= :d')
+            ->andWhere('c.valider = 1')
+            ->andWhere('c.reference != 0')
+            ->orderBy('c.date')
+            ->setParameter('d',$date );
 
         return $qb->getQuery()->getResult();
     }

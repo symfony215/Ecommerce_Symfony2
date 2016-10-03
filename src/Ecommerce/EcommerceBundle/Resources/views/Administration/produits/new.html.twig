@@ -1,7 +1,7 @@
 {% extends 'layout/layoutAdmin.html.twig' %}
 
 {% block body %}
-    <h2>Création de produits</h2>
+    <h2>{{ 'product_creation'|trans }}</h2>
     <hr>
     <div class="row">
 
@@ -10,18 +10,21 @@
         <div class="form-group col-md-6">
             {{ form_label(form.nom) }}
             {{ form_widget(form.nom) }}
+            <strong style="color: red">{{ form_errors(form.nom) }}</strong>
         </div>
         <div class="form-group  col-md-10">
             {{ form_label(form.description) }}
             {{ form_widget(form.description) }}
+            <strong style="color: red">{{ form_errors(form.description) }}</strong>
         </div>
         <div class="form-group col-md-7">
             {{ form_label(form.prixHT) }}
             {{ form_widget(form.prixHT) }}
+            <strong style="color: red">{{ form_errors(form.prixHT) }}</strong>
         </div>
 
         <div class="checkbox col-md-7">
-            <label>{{ form_widget(form.disponible) }}Disponible</label>
+            <label>{{ form_widget(form.disponible) }}{{ 'available'|trans }}</label>
         </div>
 
         <div class="form-group col-md-10">
@@ -30,10 +33,12 @@
                 <div class="form-group col-md-10">
                     {{ form_label(form.media.file) }}
                     {{ form_widget(form.media.file,{'required':'required'}) }}
+                    <strong style="color: red">{{ form_errors(form.media.file) }}</strong>
                 </div>
                 <div class="form-group col-md-6">
                     {{ form_label(form.media.name) }}
                     {{ form_widget(form.media.name) }}
+                    <strong style="color: red">{{ form_errors(form.media.name) }}</strong>
                 </div>
             </div>
         </div>
@@ -47,13 +52,13 @@
             {{ form_widget(form.categorie, {'attr': {'class' : 'form-control'}}) }}
         </div>
 
-        <input class="btn btn-success pull-right" type="submit" value="Créer" />
+        <input class="btn btn-success pull-right" type="submit" value="{{ 'create'|trans }}" />
 
         {{ form_end(form) }}
     </div>
 
     <div class="row">
-        <a href="{{ path('adminProduits_index') }}">Retour</a>
+        <a href="{{ path('adminProduits_index') }}">{{ 'back'|trans }}</a>
     </div>
 
 {% endblock %}

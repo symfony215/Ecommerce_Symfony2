@@ -34,22 +34,22 @@
                 </div>
             {% endfor %}
 
-            <h2>Factures</h2>
+            <h2>{{ 'bills'|trans }}</h2>
             <hr>
             <form>
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
-                        <th>Références</th>
-                        <th>Date</th>
-                        <th>Prix TTC</th>
+                        <th>{{ 'reference'|trans }}</th>
+                        <th>{{ 'date'|trans }}</th>
+                        <th>{{ 'price_ttc'|trans }}</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {% if not factures %}
 
-                        <tr><td style="text-align: center" colspan="4">Aucune facture actuellement.</td></tr>
+                        <tr><td style="text-align: center" colspan="4">{{ 'no_bills'|trans }}</td></tr>
 
                     {% else %}
 
